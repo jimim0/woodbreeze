@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="~{fragments/header :: header}"/>
+<body>
+<div th:insert="~{fragments/bodyHeader :: bodyHeader}"></div>
+    <!--네비끝-->
+    <!--그래프-->
+    <section class="text-center py-5">
+        <div class="container">
+            <div class="row">
+                <h2>생산공정현황</h2>
+                <div class="col-sm-2">
+                    <canvas id="chart1"></canvas>
+                    <h4 class="text-black">원재료</h4>
+                </div>
+                <div class="col-sm-2">
+                    <canvas id="chart2"></canvas>
+                    <h4 class="text-black">가공완료</h4>
+                </div>
+                <div class="col-sm-2">
+                    <canvas id="chart3"></canvas>
+                    <h4 class="text-black">에러로그</h4>
+                </div>
+                <div class="col-sm-2">
+                    <canvas id="chart4"></canvas>
+                    <h4 class="text-black">작업시작/중단</h4>
+                </div>
+                <div class="col-sm-2">
+                    <canvas id="chart5"></canvas>
+                    <h4 class="text-black">현재생산량</h4>
+                </div>
+                <div class="col-sm-2">
+                    <canvas id="chart6"></canvas>
+                    <h4 class="text-black">에러</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!--하단 바-->
+
+<!--    <script>-->
+<!--        -->
+<!--        // 데이터 및 옵션 설정-->
+<!--        var chartData1 = { datasets: [{-->
+<!--        label: "' of Votes'",-->
+<!--        data: [12, 19, 3, 5, 2, 3],-->
+<!--        backgroundColor: [-->
+<!--            'rgba(255, 99, 132, 0.2)',-->
+<!--            'rgba(54, 162, 235, 0.2)',-->
+<!--            'rgba(255, 206, 86, 0.2)',-->
+<!--            'rgba(75, 192, 192, 0.2)',-->
+<!--            'rgba(153, 102, 255, 0.2)',-->
+<!--            'rgba(255, 159, 64, 0.2)'-->
+<!--        ],-->
+<!--        borderColor: [-->
+<!--            'rgba(255, 99, 132, 1)',-->
+<!--            'rgba(54, 162, 235, 1)',-->
+<!--            'rgba(255, 206, 86, 1)',-->
+<!--            'rgba(75, 192, 192, 1)',-->
+<!--            'rgba(153, 102, 255, 1)',-->
+<!--            'rgba(255, 159, 64, 1)'-->
+<!--        ],-->
+<!--        borderWidth: 1-->
+<!--    }]};-->
+<!--        var chartOptions1 = {chart1};-->
+<!--        var chartData2 = { datasets: [{-->
+<!--        label: ' of Votes',-->
+<!--        data: [12, 19, 3, 5, 2, 3],-->
+<!--        backgroundColor: [-->
+<!--            'rgba(255, 99, 132, 0.2)',-->
+<!--            'rgba(54, 162, 235, 0.2)',-->
+<!--            'rgba(255, 206, 86, 0.2)',-->
+<!--            'rgba(75, 192, 192, 0.2)',-->
+<!--            'rgba(153, 102, 255, 0.2)',-->
+<!--            'rgba(255, 159, 64, 0.2)'-->
+<!--        ],-->
+<!--        borderColor: [-->
+<!--            'rgba(255, 99, 132, 1)',-->
+<!--            'rgba(54, 162, 235, 1)',-->
+<!--            'rgba(255, 206, 86, 1)',-->
+<!--            'rgba(75, 192, 192, 1)',-->
+<!--            'rgba(153, 102, 255, 1)',-->
+<!--            'rgba(255, 159, 64, 1)'-->
+<!--        ],-->
+<!--        borderWidth: 1-->
+<!--    }]};-->
+<!--        var chartOptions2 = { /* chart2 데이터 및 옵션 설정 */ };-->
+<!--        var chartData3 = { datasets: [{-->
+<!--        label: ' of Votes',-->
+<!--        data: [12, 19, 3, 5, 2, 3],-->
+<!--        backgroundColor: [-->
+<!--            'rgba(255, 99, 132, 0.2)',-->
+<!--            'rgba(54, 162, 235, 0.2)',-->
+<!--            'rgba(255, 206, 86, 0.2)',-->
+<!--            'rgba(75, 192, 192, 0.2)',-->
+<!--            'rgba(153, 102, 255, 0.2)',-->
+<!--            'rgba(255, 159, 64, 0.2)'-->
+<!--        ],-->
+<!--        borderColor: [-->
+<!--            'rgba(255, 99, 132, 1)',-->
+<!--            'rgba(54, 162, 235, 1)',-->
+<!--            'rgba(255, 206, 86, 1)',-->
+<!--            'rgba(75, 192, 192, 1)',-->
+<!--            'rgba(153, 102, 255, 1)',-->
+<!--            'rgba(255, 159, 64, 1)'-->
+<!--        ],-->
+<!--        borderWidth: 1-->
+<!--    }]};-->
+<!--        var chartOptions3 = { /* chart3 데이터 및 옵션 설정 */ };-->
+<!--        var chartData4 = { datasets: [{-->
+<!--        label: ' of Votes',-->
+<!--        data: [12, 19, 3, 5, 2, 3],-->
+<!--        backgroundColor: [-->
+<!--            'rgba(255, 99, 132, 0.2)',-->
+<!--            'rgba(54, 162, 235, 0.2)',-->
+<!--            'rgba(255, 206, 86, 0.2)',-->
+<!--            'rgba(75, 192, 192, 0.2)',-->
+<!--            'rgba(153, 102, 255, 0.2)',-->
+<!--            'rgba(255, 159, 64, 0.2)'-->
+<!--        ],-->
+<!--        borderColor: [-->
+<!--            'rgba(255, 99, 132, 1)',-->
+<!--            'rgba(54, 162, 235, 1)',-->
+<!--            'rgba(255, 206, 86, 1)',-->
+<!--            'rgba(75, 192, 192, 1)',-->
+<!--            'rgba(153, 102, 255, 1)',-->
+<!--            'rgba(255, 159, 64, 1)'-->
+<!--        ],-->
+<!--        borderWidth: 1-->
+<!--    }]};-->
+<!--        var chartOptions4 = { /* chart4 데이터 및 옵션 설정 */ };-->
+<!--        var chartData5 = { datasets: [{-->
+<!--        label: ' of Votes',-->
+<!--        data: [12, 19, 3, 5, 2, 3],-->
+<!--        backgroundColor: [-->
+<!--            'rgba(255, 99, 132, 0.2)',-->
+<!--            'rgba(54, 162, 235, 0.2)',-->
+<!--            'rgba(255, 206, 86, 0.2)',-->
+<!--            'rgba(75, 192, 192, 0.2)',-->
+<!--            'rgba(153, 102, 255, 0.2)',-->
+<!--            'rgba(255, 159, 64, 0.2)'-->
+<!--        ],-->
+<!--        borderColor: [-->
+<!--            'rgba(255, 99, 132, 1)',-->
+<!--            'rgba(54, 162, 235, 1)',-->
+<!--            'rgba(255, 206, 86, 1)',-->
+<!--            'rgba(75, 192, 192, 1)',-->
+<!--            'rgba(153, 102, 255, 1)',-->
+<!--            'rgba(255, 159, 64, 1)'-->
+<!--        ],-->
+<!--        borderWidth: 1-->
+<!--    }]};-->
+<!--        var chartOptions5 = { /* chart5 데이터 및 옵션 설정 */ };-->
+<!--        var chartData6 = { datasets: [{-->
+<!--        label: ' of Votes',-->
+<!--        data: [12, 19, 3, 5, 2, 3],-->
+<!--        backgroundColor: [-->
+<!--            'rgba(255, 99, 132, 0.2)',-->
+<!--            'rgba(54, 162, 235, 0.2)',-->
+<!--            'rgba(255, 206, 86, 0.2)',-->
+<!--            'rgba(75, 192, 192, 0.2)',-->
+<!--            'rgba(153, 102, 255, 0.2)',-->
+<!--            'rgba(255, 159, 64, 0.2)'-->
+<!--        ],-->
+<!--        borderColor: [-->
+<!--            'rgba(255, 99, 132, 1)',-->
+<!--            'rgba(54, 162, 235, 1)',-->
+<!--            'rgba(255, 206, 86, 1)',-->
+<!--            'rgba(75, 192, 192, 1)',-->
+<!--            'rgba(153, 102, 255, 1)',-->
+<!--            'rgba(255, 159, 64, 1)'-->
+<!--        ],-->
+<!--        borderWidth: 1-->
+<!--    }]};-->
+<!--        var chartOptions6 = { /* chart6 데이터 및 옵션 설정 */ };-->
+
+<!--        // 차트 생성-->
+<!--        var ctx1 = document.getElementById('chart1').getContext('2d');-->
+<!--        var chart1 = new Chart(ctx1, {-->
+<!--            type: 'doughnut',-->
+<!--            data: chartData1,-->
+<!--            options: chartOptions1-->
+<!--        });-->
+
+<!--        var ctx2 = document.getElementById('chart2').getContext('2d');-->
+<!--        var chart2 = new Chart(ctx2, {-->
+<!--            type: 'doughnut',-->
+<!--            data: chartData2,-->
+<!--            options: chartOptions2-->
+<!--        });-->
+
+<!--        var ctx3 = document.getElementById('chart3').getContext('2d');-->
+<!--        var chart3 = new Chart(ctx3, {-->
+<!--            type: 'doughnut',-->
+<!--            data: chartData3,-->
+<!--            options: chartOptions3-->
+<!--        });-->
+
+<!--        var ctx4 = document.getElementById('chart4').getContext('2d');-->
+<!--        var chart4 = new Chart(ctx4, {-->
+<!--            type: 'doughnut',-->
+<!--            data: chartData4,-->
+<!--            options: chartOptions4-->
+<!--        });-->
+
+<!--        var ctx5 = document.getElementById('chart5').getContext('2d');-->
+<!--        var chart5 = new Chart(ctx5, {-->
+<!--            type: 'doughnut',-->
+<!--            data: chartData5,-->
+<!--            options: chartOptions5-->
+<!--        });-->
+
+<!--        var ctx6 = document.getElementById('chart6').getContext('2d');-->
+<!--        var chart6 = new Chart(ctx6, {-->
+<!--            type: 'doughnut',-->
+<!--            data: chartData6,-->
+<!--            options: chartOptions6-->
+<!--        });-->
+<!--    </script>-->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // 로그인 상태 확인
+        var isLoggedIn = false; // 로그인되지 않은 상태라고 가정
+
+        if (!isLoggedIn) {
+            // 로그인되지 않은 경우, 사용자에게 메시지를 표시하고 로그인 페이지로 이동할지 물어봄
+            var shouldLogin = window.confirm("로그인이 필요합니다. 로그인하시겠습니까?");
+            if (shouldLogin) {
+                // 사용자가 확인을 선택한 경우, 로그인 페이지로 이동
+                window.location.href = "/login";
+            } else {
+                // 사용자가 취소를 선택한 경우, 이동하지 않음
+                window.location.href = "/";
+            }
+        }
+    });
+
+</script>
+<div th:insert="~{fragments/footer :: footer}"></div>
+</body>
+
+</html>
